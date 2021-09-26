@@ -1,8 +1,8 @@
 package edu.neu.madcourse.numad21fa_abdulrahmanisegen;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity
         implements View.OnClickListener{
 
-    protected Button toastButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +24,10 @@ public class MainActivity extends AppCompatActivity
                         "Abdulrahman Isegen \n isegen.a@northeasten.edu",
                         Toast.LENGTH_LONG)
                         .show();
+                break;
+            case R.id.clickyclicky:
+                Intent toCLicky = new Intent(this,ClickyActivity.class);
+                startActivity(toCLicky);
                 break;
         }
 
