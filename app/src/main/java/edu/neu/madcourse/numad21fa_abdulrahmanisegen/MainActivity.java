@@ -29,6 +29,10 @@ public class MainActivity extends AppCompatActivity
                 Intent toCLicky = new Intent(this,ClickyActivity.class);
                 startActivity(toCLicky);
                 break;
+            case R.id.linkCollector:
+                Intent toLinkCollector = new Intent(this,LinkActivity.class);
+                startActivity(toLinkCollector);
+                break;
         }
 
     }

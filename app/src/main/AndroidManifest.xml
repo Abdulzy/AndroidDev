@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Numad21fa_abdulrahmanisegen">
         <activity
+            android:name=".LinkActivity"
+            android:exported="true" />
+        <activity
             android:name=".ClickyActivity"
             android:exported="true" />
         <activity
