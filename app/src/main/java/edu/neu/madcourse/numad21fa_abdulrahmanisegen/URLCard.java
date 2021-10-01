@@ -1,19 +1,31 @@
 package edu.neu.madcourse.numad21fa_abdulrahmanisegen;
 
-public class URLCard {
-    private final String itemName;
-    private final String itemDesc;
+import android.content.Intent;
+import android.net.Uri;
+import androidx.appcompat.app.AppCompatActivity;
 
-    public URLCard(String itemName, String itemDesc) {
-        this.itemName = itemName;
-        this.itemDesc = itemDesc;
+public class URLCard extends AppCompatActivity implements UrlListener {
+    private final String name;
+    private final String url;
+
+    //Constructor
+    public URLCard(String item_name, String item_url) {
+        this.name = item_name;
+        this.url = item_url;
     }
 
-    public String getItemName() {
-        return itemName;
+    //Getters for the name and
+    public String getName() {
+        return name;
     }
 
-    public String getItemDesc() {
-        return itemDesc;
+    public String getUrl() {
+        return url;
+    }
+
+    @Override
+    public void onURLClick(int position) {
+        Uri uri = Uri.parse(url);
+        startActivity(new Intent(Intent.ACTION_VIEW,uri));
     }
 }
