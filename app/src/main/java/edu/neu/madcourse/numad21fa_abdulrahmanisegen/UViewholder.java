@@ -23,6 +23,7 @@ public class UViewholder extends RecyclerView.ViewHolder {
                 if (listener != null) {
                     int position = getLayoutPosition();
                     if (position != RecyclerView.NO_POSITION) {
+                        listener.onURLClick(position);
                     }
                 }
             }

@@ -2,6 +2,9 @@ package edu.neu.madcourse.numad21fa_abdulrahmanisegen;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class URLCard extends AppCompatActivity implements UrlListener {
@@ -25,7 +28,6 @@ public class URLCard extends AppCompatActivity implements UrlListener {
 
     @Override
     public void onURLClick(int position) {
-        Uri uri = Uri.parse(url);
-        startActivity(new Intent(Intent.ACTION_VIEW,uri));
+
     }
 }

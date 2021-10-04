@@ -12,11 +12,11 @@ public class UViewAdapter extends RecyclerView.Adapter<UViewholder> {
     private final ArrayList<URLCard> urlList;
     private UrlListener listener;
 
-    public UViewAdapter(ArrayList<URLCard> list, UrlListener listener) {
+    public UViewAdapter(ArrayList<URLCard> list) {
         this.urlList = list;
     }
 
-    public void setOnItemClickListener(UrlListener listener) {
+    public void setOnUrlListener(UrlListener listener) {
         this.listener = listener;
     }
 
