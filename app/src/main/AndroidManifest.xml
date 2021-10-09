@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="edu.neu.madcourse.numad21fa_abdulrahmanisegen">
 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_aoi"
@@ -9,6 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_aoi_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Numad21fa_abdulrahmanisegen">
+        <activity
+            android:name=".LocatorActivity"
+            android:exported="true" />
         <activity
             android:name=".LinkActivity"
             android:exported="true" />

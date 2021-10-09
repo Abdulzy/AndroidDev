@@ -33,6 +33,10 @@ public class MainActivity extends AppCompatActivity
                 Intent toLinkCollector = new Intent(this,LinkActivity.class);
                 startActivity(toLinkCollector);
                 break;
+            case R.id.locator:
+                Intent toLocator = new Intent(this,LocatorActivity.class);
+                startActivity(toLocator);
+                break;
         }
 
     }
