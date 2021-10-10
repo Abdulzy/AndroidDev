@@ -64,6 +64,17 @@ public class LocatorActivity extends AppCompatActivity {
     }
 
 
+    @SuppressLint("MissingSuperCall")
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode == 100 && grantResults.length > 0 &&
+                (grantResults[0] + grantResults[1] == PackageManager.PERMISSION_GRANTED)){
+            getLocation();
+        }
+        else {
+            Toast.makeText(getApplicationContext(),"Permission denied.",Toast.LENGTH_LONG).show();
+        }
+    }
 
     @SuppressLint("MissingPermission")
     private void getLocation() {
