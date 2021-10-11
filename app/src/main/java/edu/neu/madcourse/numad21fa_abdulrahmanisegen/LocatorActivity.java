@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
-import android.media.audiofx.Equalizer;
 import android.os.Bundle;
 import android.os.Looper;
 import android.provider.Settings;
@@ -34,6 +33,9 @@ public class LocatorActivity extends AppCompatActivity {
     FusedLocationProviderClient locationProviderClient;
 
 
+    private static final String KEY_OF_INSTANCE = "KEY_OF_INSTANCE";
+    private static final String NUMBER_OF_ITEMS = "NUMBER_OF_ITEMS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,7 @@ public class LocatorActivity extends AppCompatActivity {
         locator = findViewById(R.id.locator);
         latitude = findViewById(R.id.latitude_value);
         longitude = findViewById(R.id.longitude_value);
-
+        initialItemData(savedInstanceState);
         locationProviderClient =
                 LocationServices.getFusedLocationProviderClient(LocatorActivity.this);
         locator.setOnClickListener(new View.OnClickListener() {
@@ -63,6 +65,26 @@ public class LocatorActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+
+
+        outState.putInt(NUMBER_OF_ITEMS, 2);
+
+        outState.putString(KEY_OF_INSTANCE + 0 + "0", latitude.getText().toString());
+        outState.putString(KEY_OF_INSTANCE + 0 + "1", longitude.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+
+    private void initialItemData(Bundle savedInstanceState) {
+
+        if (savedInstanceState != null && savedInstanceState.containsKey(NUMBER_OF_ITEMS)) {
+            latitude.setText(String.valueOf(savedInstanceState.getString(KEY_OF_INSTANCE + 0 + "0")));
+            longitude.setText(String.valueOf(savedInstanceState.getString(KEY_OF_INSTANCE + 0 + "1")));
+        }
+
+    }
 
     @SuppressLint("MissingSuperCall")
     @Override
