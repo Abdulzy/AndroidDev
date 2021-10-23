@@ -35,7 +35,7 @@ public class WebServiceActivity extends AppCompatActivity {
     public void webserviceButtonHandler(View view){
         PingWebServiceTask task = new PingWebServiceTask();
         try {
-            String url = NetworkUtil.validInput(userInput.getText().toString());
+            String url = NetworkUtil.validInput("https://api.agify.io/?name=" + userInput.getText().toString());
             task.execute(url); // This is a security risk.  Don't let your user enter the URL in a real app.
         } catch (NetworkUtil.MyException e) {
             Toast.makeText(getApplication(),e.toString(),Toast.LENGTH_SHORT).show();
@@ -57,7 +57,7 @@ public class WebServiceActivity extends AppCompatActivity {
             try {
 
                 // Initial website is "https://jsonplaceholder.typicode.com/posts/1"
-                URL url = new URL("https://api.agify.io/?name=" + params[0]);
+                URL url = new URL( params[0]);
                 // Get String response from the url address
                 String resp = NetworkUtil.httpResponse(url);
                 //Log.i("resp",resp);
