@@ -37,6 +37,10 @@ public class MainActivity extends AppCompatActivity
                 Intent toLocator = new Intent(this,LocatorActivity.class);
                 startActivity(toLocator);
                 break;
+            case R.id.webService:
+                Intent toWebService = new Intent(this,WebServiceActivity.class);
+                startActivity(toWebService);
+                break;
         }
 
     }

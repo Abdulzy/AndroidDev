@@ -20,7 +20,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/URL_editText"
+        android:id="@+id/requestedName"
         android:text="drake"
         android:gravity="center"/>
 
@@ -28,11 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Show me"
-        android:onClick=""
+        android:onClick="webserviceButtonHandler"
         />
 
     <TextView
-        android:id="@+id/result"
+        android:id="@+id/ageResult"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="false"
