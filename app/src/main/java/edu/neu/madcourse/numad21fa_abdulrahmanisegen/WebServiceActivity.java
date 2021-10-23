@@ -3,8 +3,10 @@ package edu.neu.madcourse.numad21fa_abdulrahmanisegen;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Toast;
 
-public class WebService extends AppCompatActivity {
+public class WebServiceActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
