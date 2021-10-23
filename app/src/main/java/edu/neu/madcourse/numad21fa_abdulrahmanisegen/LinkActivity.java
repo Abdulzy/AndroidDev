@@ -156,7 +156,7 @@ public class LinkActivity extends AppCompatActivity  {
                     String url = "" +dialogUrl.getText().toString().trim();
                     if(url.length() > 12){
                         String domain = url.substring((url.length() - 4));
-                        if(dialogUrl.getText().toString().trim().substring(0,8).equals("https://")
+                        if(dialogUrl.getText().toString().trim().substring(0,8).equals("https://" )
                                 && (domain.equals(".com")
                                 || domain.equals(".edu")
                                 || domain.equals(".org"))){
