@@ -12,10 +12,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:textColor="@color/black"
+        android:textColor="@color/purple_500"
         android:gravity="center"
         android:textSize="20dp"
-        android:text="Let me guess the age of a random name?" />
+        android:text="Want to know about an famous artist?" />
 
     <EditText
         android:layout_width="match_parent"
@@ -36,6 +36,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:singleLine="false"
+        android:textStyle="bold"
+        android:paddingStart="10dp"
+        android:textColor="@color/purple_500"
+        android:textSize="20dp"
         android:text="" />
 
 </LinearLayout>

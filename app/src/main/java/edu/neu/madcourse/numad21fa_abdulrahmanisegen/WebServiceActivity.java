@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -35,7 +36,7 @@ public class WebServiceActivity extends AppCompatActivity {
     public void webserviceButtonHandler(View view){
         PingWebServiceTask task = new PingWebServiceTask();
         try {
-            String url = NetworkUtil.validInput("https://api.agify.io/?name=" + userInput.getText().toString());
+            String url = NetworkUtil.validInput("https://theaudiodb.com/api/v1/json/1/search.php?s=" + userInput.getText().toString());
             task.execute(url); // This is a security risk.  Don't let your user enter the URL in a real app.
         } catch (NetworkUtil.MyException e) {
             Toast.makeText(getApplication(),e.toString(),Toast.LENGTH_SHORT).show();
@@ -43,7 +44,7 @@ public class WebServiceActivity extends AppCompatActivity {
 
     }
 
-    private class PingWebServiceTask  extends AsyncTask<String, Integer, JSONObject> {
+    private class PingWebServiceTask  extends AsyncTask<String, Integer, JSONArray> {
 
         @Override
         protected void onProgressUpdate(Integer... values) {
@@ -51,9 +52,10 @@ public class WebServiceActivity extends AppCompatActivity {
         }
 
         @Override
-        protected JSONObject doInBackground(String... params) {
+        protected JSONArray doInBackground(String... params) {
 
             JSONObject jObject = new JSONObject();
+            JSONArray jArray = new JSONArray();
             try {
 
                 // Initial website is "https://jsonplaceholder.typicode.com/posts/1"
@@ -64,11 +66,17 @@ public class WebServiceActivity extends AppCompatActivity {
 
                 // JSONArray jArray = new JSONArray(resp);    // Use this if your web service returns an array of objects.  Arrays are in [ ] brackets.
                 // Transform String into JSONObject
+                //jObject = new JSONObject(resp);
+
                 jObject = new JSONObject(resp);
+                jArray = jObject.getJSONArray("artists");
+                JSONObject jObject1 = new JSONObject();
+
+//                jObject =  jArray.getJSONArray(0).getJSONObject(0);
 
                 //Log.i("jTitle",jObject.getString("title"));
                 //Log.i("jBody",jObject.getString("body"));
-                return jObject;
+                return jArray;
 
             } catch (MalformedURLException e) {
                 Log.e(TAG,"MalformedURLException");
@@ -84,16 +92,25 @@ public class WebServiceActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            return jObject;
+            return jArray;
         }
 
         @Override
-        protected void onPostExecute(JSONObject jObject) {
-            super.onPostExecute(jObject);
+        protected void onPostExecute(JSONArray jArray) {
+            super.onPostExecute(jArray);
             TextView result_view = (TextView)findViewById(R.id.ageResult);
 
+            StringBuilder result = new StringBuilder();
+
             try {
-                result_view.setText(jObject.getString("age"));
+                result.append("Name: ").append(jArray.getJSONObject(0).getString("strArtist")).append("\n");
+                result.append("Birth Year: ").append(jArray.getJSONObject(0).getString("intBornYear")).append("\n");
+                result.append("Gender: ").append(jArray.getJSONObject(0).getString("strGender")).append("\n");
+                result.append("Location: ").append(jArray.getJSONObject(0).getString("strCountryCode")).append("\n");
+                result.append("Label: ").append(jArray.getJSONObject(0).getString("strLabel")).append("\n");
+                result.append("Genre: ").append(jArray.getJSONObject(0).getString("strGenre")).append("\n");
+                result.append("Style: ").append(jArray.getJSONObject(0).getString("strStyle"));
+                result_view.setText(result.toString());
             } catch (JSONException e) {
                 result_view.setText("Something went wrong!");
             }
