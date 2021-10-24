@@ -112,7 +112,7 @@ public class WebServiceActivity extends AppCompatActivity {
                 result.append("Style: ").append(jArray.getJSONObject(0).getString("strStyle"));
                 result_view.setText(result.toString());
             } catch (JSONException e) {
-                result_view.setText("Something went wrong!\n Try a different name or spell it right!");
+                result_view.setText("Something went wrong!\nTry a different name or spell it right!");
             }
 
         }
